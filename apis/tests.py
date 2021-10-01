@@ -30,9 +30,9 @@ class AccountTests(APITestCase):
         """
         Ensure that we can t update non existing records
         """
-        #url = reverse('todos-detail')
-        data = {'title': 'unit test' , 'description':'check if test work well'}
-        response = self.client.put('apis/v1/todo/5/',data,format='json')
+        url = reverse('todos-detail' ,kwargs={'pk':1})
+        data = {'id':1, 'title': 'unit test' , 'description':'check if test work well'}
+        response = self.client.put(url,data,format='json')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
     def test_delete(self):
         """
